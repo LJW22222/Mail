@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" th:href="@{/garbege/company.css}" />
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>입점 관련 제안서</title>
+</head>
+<body>
+<div class="container">
+    <div class="left-column">
+        <!-- 왼쪽에 회사 소개 PDF 파일을 넣으세요 -->
+        <iframe src="회사소개.pdf" style="width:100%; height:860px;" frameborder="0"></iframe>
+    </div>
+    <div class="right-column">
+        <h2>입점 관련 제안서</h2>
+        <form method="post" th:action="@{/sendCompanyMaile}" th:object="${companyRequestDto}"  enctype="multipart/form-data">
+        <div class="form-group">
+                <label for="email">이메일 주소:</label>
+                <input type="email" id="email" th:field="*{email}" required>
+            </div>
+            <div class="form-group">
+                <label for="phoneNumber">전화번호:</label>
+                <input type="text" id="phoneNumber" th:field="*{phoneNumber}" required>
+            </div>
+            <div class="form-group">
+                <label for="storeRelatedProducts">입점 상품:</label>
+                <input type="text" id="storeRelatedProducts" th:field="*{storeRelatedProducts}" required>
+            </div>
+            <div class="form-group">
+                <label for="homepageAddress">상품 관련 홈페이지 주소:</label>
+                <input type="text" id="homepageAddress" th:field="*{homepageAddress}" required>
+            </div>
+            <div class="form-group">
+                <label for="file">첨부 파일:</label>
+                <input type="file" id="file" th:field="*{multipartFile}">
+            </div>
+            <div class="form-group">
+                <button id="submitButton" type="submit">제출</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+spring:
+  devtools:
+    livereload:
+      enabled: true
+  mvc:
+    view:
+      prefix: /templates/
+      suffix: .jsp
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 25MB
+  application:
+    name: mail
+  mail:
+    host: smtp.naver.com
+    port: 465
+    username: rnralsakstp2@naver.com
+    password: whddnjsWKDDLDI12
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.ssl.enable: true
+      mail.smtp.ssl.trust: smtp.naver.com
+  data:
+    redis:
+      host: localhost
+      port: 6379
+  datasource:
+    url: jdbc:mysql://localhost:3306/testdb2
+    username: 'root'
+    password: '20190619'
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: false
+        dialect: org.hibernate.dialect.MySQLDialect
+    database-platform: org.hibernate.dialect.MySQL8Dialect

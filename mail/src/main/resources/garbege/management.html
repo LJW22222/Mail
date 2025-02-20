@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" th:href="@{/garbege/management.css}" />
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>운영진 관련 신청서</title>
+</head>
+<body>
+<div class="container">
+    <h2 style="text-align: center;">운영진 신청서</h2>
+    <form method="post" th:action="@{/sendManagementMail}" th:object="${managementDTO}">
+        <div class="form-group">
+            <label for="idAndName">아이디와 닉네임을 적어주세요.</label>
+            <input type="text" id="idAndName" th:field="*{idAndName}" required>
+        </div>
+        <div class="form-group">
+            <label for="phoneNumber">전화번호를 적어주세요.</label>
+            <input type="text" id="phoneNumber" th:field="*{phoneNumber}" required>
+        </div>
+        <div class="form-group">
+            <label for="storeRelatedProducts">지원 분야를 선택해주세요.</label>
+            <select id="storeRelatedProducts" th:field="*{stepType}" required>
+                <option value="">선택해주세요</option>
+                <option value="신입맞이 스탭">신입맞이 스탭</option>
+                <option value="게시글 스탭">게시글 스탭</option>
+                <option value="모임관리 스탭">모임관리 스탭</option>
+                <option value="채팅방관리 스탭">채팅방관리 스탭</option>
+                <!-- 필요한 만큼 옵션을 추가할 수 있습니다 -->
+            </select>
+        </div>
+        <div class="form-group">
+            <button id="submitButton" type="submit">제출</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

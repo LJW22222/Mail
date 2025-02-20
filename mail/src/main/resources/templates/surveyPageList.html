@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>설문지 페이지 목록</title>
+    <link rel="stylesheet" th:href="@{/css/surveyPageList.css}"/>
+</head>
+<body>
+
+<div class="container">
+    <h1>설문지 페이지 목록</h1>
+
+    <table>
+        <thead>
+        <tr>
+            <th>번호</th>
+            <!--      <th>미리보기</th>-->
+            <th>제목</th>
+            <th>링크</th>
+            <th>삭제</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Thymeleaf 반복문을 통해 페이지 목록을 동적으로 생성 -->
+        <tr th:each="surveyPage, rowIndex : ${surveyList.pageList}">
+            <td th:text="${rowIndex.index + 1}"></td>
+            <!--      <td class="file-preview">-->
+            <!--        &lt;!&ndash; 파일 확장자에 따라 다른 미리보기 이미지 사용 예시 &ndash;&gt;-->
+            <!--        <img th:if="${#strings.endsWith(surveyPage.fileName, '.html')}" th:src="@{/images/html-icon.png}" alt="HTML File">-->
+            <!--        <img th:if="${#strings.endsWith(surveyPage.fileName, '.pdf')}" th:src="@{/images/pdf-icon.png}" alt="PDF File">-->
+            <!--        &lt;!&ndash; 필요에 따라 더 많은 파일 유형에 대한 미리보기 아이콘 추가 &ndash;&gt;-->
+            <!--      </td>-->
+            <td th:text="${surveyPage.getFileName()}"></td>
+            <td><a th:href="@{/surveys/getSurvey/{id}(id=${surveyPage.fileName})}">상세 보기</a></td>
+            <td>
+                <!-- data-* 속성을 사용하여 JavaScript에서 문자열 값을 읽어옴 -->
+                <button type="button" data-file-name="${surveyPage.fileName}" class="delete-survey-btn">설문조사 삭제</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/js/surveyPageList.js"></script>
+</body>
+</html>

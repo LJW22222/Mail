@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>설문지 제작</title>
+    <link rel="stylesheet" th:href="@{/css/survey.css}"/>
+</head>
+<body>
+<div class="container">
+    <div class="main-content">
+        <form id="survey-form">
+            <input type="text" id="title-input" name="title" placeholder="제목">
+        </form>
+    </div>
+    <div class="sidebar">
+        <h2>필드 선택</h2>
+        <button class="add-text-field">텍스트 필드 추가</button>
+        <button class="add-select-field">선택 옵션 필드 추가</button>
+        <button class="add-textarea">텍스트 에어리어 추가</button>
+        <button class="add-checkbox-field">체크박스 필드 추가</button>
+        <button class="add-radio-field">라디오 버튼 추가</button>
+        <button class="save-button">저장</button>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<script src="/js/survey.js"></script>
+</body>
+</html>
