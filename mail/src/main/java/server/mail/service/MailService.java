@@ -1,9 +1,9 @@
-package server.t.domain;
+package server.mail.service;
 
 import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import server.t.infra.mail.CoustomMail;
+import server.mail.infra.mail.CoustomMail;
 
 import java.io.IOException;
 import java.util.Map;

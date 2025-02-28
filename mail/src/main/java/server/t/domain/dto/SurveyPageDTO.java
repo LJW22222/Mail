@@ -1,7 +1,6 @@
-package server.t.DTO;
+package server.t.domain.dto;
 
 import lombok.Data;
-import server.t.DTO.domain.SurveyPageList;
 
 import java.io.File;
 import java.util.Arrays;

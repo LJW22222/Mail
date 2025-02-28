@@ -1,26 +1,24 @@
-package server.t.domain.survey;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-import server.t.DTO.SurveyDTO;
-import server.t.DTO.SurveyPageDTO;
+package server.mail.service.component;
 
-import java.io.*;
+import org.springframework.stereotype.Component;
+import server.mail.service.dto.SurveryInf;
+import server.t.domain.dto.SurveyPageDTO;
+
+import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-@Service
-@RequiredArgsConstructor
-public class Survey {
+@Component
+public class SurveyAppend {
 
     static final String filePath = "C:\\home\\ubuntu\\survey\\"; // 템플릿 디렉토리 경로
 
 
-    public void saveSurveyPage(SurveyDTO surveyDTO) throws IOException {
-        File file = new File(filePath + surveyDTO.getName());
-        FileWriter writer = new FileWriter(file);
-        writer.write(surveyDTO.getContent());
-        writer.close();
+    public SurveryInf saveSurveyPage(SurveryInf surveryInf) throws IOException {
+        System.out.println(surveryInf.toString());
+        return surveryInf;
     }
 
     public byte[] getSurveyPage(String name) throws IOException {

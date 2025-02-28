@@ -1,11 +1,12 @@
-package server.t.api;
+package server.mail.api;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import server.t.DTO.SurveyDTO;
-import server.t.domain.SurveyService;
+import server.mail.service.SurveyService;
+import server.mail.api.dto.SurveyDTO;
+import server.mail.service.dto.SurveryInf;
 
 import java.io.IOException;
 
@@ -18,11 +19,10 @@ public class SurveyController {
     private final SurveyService surveyService;
 
     //설문지 local Server에 저장
-    @PostMapping("/saveSurvey")
-    @ResponseBody
-    public String saveSurvey(@RequestBody SurveyDTO surveyDTO) throws IOException {
-        surveyService.saveSurveyPage(surveyDTO);
-        return "저장이 완료 되었습니다!";
+    @PostMapping()
+    public ResponseEntity<SurveryInf> saveSurvey(@RequestBody SurveyDTO surveyDTO) throws IOException {
+        SurveryInf surveryInf = surveyService.saveSurveyPage(surveyDTO.to());
+        return ResponseEntity.ok(surveryInf);
     }
 
     //html 파일 상세 보기
