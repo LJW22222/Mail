@@ -1,11 +1,4 @@
 spring:
-  devtools:
-    livereload:
-      enabled: true
-  mvc:
-    view:
-      prefix: /templates/
-      suffix: .jsp
   servlet:
     multipart:
       max-file-size: 5MB
@@ -14,9 +7,9 @@ spring:
     name: mail
   mail:
     host: smtp.naver.com
-    port: 465
-    username: rnralsakstp2@naver.com
-    password: whddnjsWKDDLDI12
+    port: ${MAIL_PORT}
+    username: ${MAIL_ID}
+    password: ${MAIL_PASSWORD}
     properties:
       mail.smtp.auth: true
       mail.smtp.ssl.enable: true
@@ -25,10 +18,14 @@ spring:
     redis:
       host: localhost
       port: 6379
+    mongodb:
+      host: localhost
+      port: 27017
+      database: finalProject
   datasource:
-    url: jdbc:mysql://localhost:3306/testdb2
-    username: 'root'
-    password: '20190619'
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
   jpa:
     show-sql: true
     hibernate:
@@ -38,3 +35,6 @@ spring:
         format_sql: false
         dialect: org.hibernate.dialect.MySQLDialect
     database-platform: org.hibernate.dialect.MySQL8Dialect
+
+server:
+  port: 9292
